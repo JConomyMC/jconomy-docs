@@ -26,14 +26,14 @@ plugins/
 
 ## Configuration areas
 
-| Section | Purpose |
-|---|---|
-| `default-world` | The world used for balance lookups when no world is specified |
-| `default-currency` | The currency exposed by the legacy Vault adapter |
-| `default-number-formatter` | Formatting rules that apply to all currencies unless overridden |
-| `currencies` | Definitions for each currency your server uses |
-| `vault-legacy-adapter` | Controls whether JConomy registers as a legacy Vault economy provider |
-| `cache` | In-memory account cache size |
+| Section                    | Purpose                                                               |
+|----------------------------|-----------------------------------------------------------------------|
+| `default-world`            | The world used for balance lookups when no world is specified         |
+| `default-currency`         | The currency exposed by the legacy Vault adapter                      |
+| `default-number-formatter` | Formatting rules that apply to all currencies unless overridden       |
+| `currencies`               | Definitions for each currency your server uses                        |
+| `vault-legacy-adapter`     | Controls whether JConomy registers as a legacy Vault economy provider |
+| `cache`                    | In-memory account cache size                                          |
 
 The `config-version` key at the top of the file is used internally for automatic migration. Do not change it.
 
