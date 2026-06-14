@@ -37,9 +37,11 @@ Because JConomy provides no player-facing commands, most servers will need a sep
 
 **Use EssentialsX alongside JConomy.** EssentialsX provides `/balance`, `/pay`, `/eco`, and related commands. When EssentialsX detects an active Vault economy provider, it delegates balance operations to that provider. With JConomy installed and active, EssentialsX will use JConomy for persistence while still handling all command and player interaction concerns itself.
 
-**Use another Vault-compatible economy commands plugin.** Any plugin that uses VaultUnlocked or legacy Vault to read and write balances will work with JConomy as the backend.
+**Use another Vault-compatible economy commands plugin.** Any plugin that acts as a _consumer_ of VaultUnlocked or legacy Vault — reading and writing balances through the API — will work with JConomy as the backend.
 
-There is no migration required for existing economy command plugins. They continue to work exactly as they do today once JConomy is registered as the provider.
+The distinction that matters: a **consumer** plugin queries the economy provider for balance data (EssentialsX, shop plugins, reward plugins). A **provider** plugin registers itself as the economy backend. JConomy is a provider. Only one VaultUnlocked provider can be active on a server at a time — see below.
+
+There is no migration required for existing economy consumer plugins. They continue to work exactly as they do today once JConomy is registered as the provider.
 
 ---
 
@@ -47,7 +49,17 @@ There is no migration required for existing economy command plugins. They contin
 
 JConomy requires VaultUnlocked to be installed. VaultUnlocked is the service registry that connects JConomy to the rest of your plugin ecosystem. Without it, JConomy will disable itself on startup.
 
-The legacy Vault plugin is also required to be present (even if you do not plan to use the legacy adapter), due to how JConomy declares its plugin dependencies. See [Installation](../installation/) for details.
+If you currently have Vault installed, replace it with VaultUnlocked. VaultUnlocked is a drop-in replacement for Vault: it provides all original Vault API classes at the same locations, so every plugin that worked with Vault will continue to work unchanged. You do not need both installed.
+
+### Compatibility with other economy providers
+
+**VaultUnlocked providers always conflict.** JConomy always registers as the VaultUnlocked economy provider. Only one VaultUnlocked provider can be active on a server at a time. If another plugin is already registered as the VaultUnlocked provider, the two will conflict. You must remove the other provider before installing JConomy.
+
+**Legacy Vault providers only conflict if you opt in.** By default, JConomy does not register as a legacy Vault provider. If you have an existing legacy Vault economy plugin on your server, it will continue to operate without interference. Enabling JConomy as a legacy Vault provider is an explicit opt-in step — and if you do enable it, you will need to remove your existing legacy Vault economy plugin first, as the same one-provider rule applies.
+
+<!-- TODO: link legacy adapter configuration page once written -->
+
+Plugins that only _consume_ the Vault or VaultUnlocked API (shops, command plugins, reward systems) are not providers and are not affected by either rule. They will continue to work once JConomy is registered.
 
 ---
 
