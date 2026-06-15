@@ -72,3 +72,5 @@ If you are a plugin developer looking to integrate with JConomy programmatically
 
 New to JConomy? Read [Before You Begin](before-you-begin/) before installing. It sets expectations about what JConomy does and does not provide.
 
+Once installed and configured, see [Experimental Features](experimental/) if you want to enable data transfer commands, and [Reference](reference/) for commands, permissions, and operational guidance.
+

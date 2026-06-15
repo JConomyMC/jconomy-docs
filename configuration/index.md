@@ -28,12 +28,13 @@ plugins/
 
 | Section                    | Purpose                                                               |
 |----------------------------|-----------------------------------------------------------------------|
-| `default-world`            | The world used for balance lookups when no world is specified         |
-| `default-currency`         | The currency exposed by the legacy Vault adapter                      |
+| `default-world`            | The world used by the legacy Vault adapter when no world is specified |
+| `default-currency`         | The currency used by the legacy Vault adapter for balance operations  |
 | `default-number-formatter` | Formatting rules that apply to all currencies unless overridden       |
 | `currencies`               | Definitions for each currency your server uses                        |
 | `vault-legacy-adapter`     | Controls whether JConomy registers as a legacy Vault economy provider |
 | `cache`                    | In-memory account cache size                                          |
+| `features`                 | Enables experimental features; not present in the default config file |
 
 The `config-version` key at the top of the file is used internally for automatic migration. Do not change it.
 
@@ -44,6 +45,8 @@ The `config-version` key at the top of the file is used internally for automatic
 - [Currencies](currencies/) — how to define currencies, set display names and symbols, and control the format of balance strings
 - [Number Formatting](number-formatting/) — how to configure grouping separators, decimal places, and rounding
 - [Legacy Vault Adapter](legacy-vault-adapter/) — how to enable JConomy as a legacy Vault economy provider
+
+The `features` section is not present in the default `config.yml`. It must be added manually. See [Experimental Features](../experimental/) for details.
 
 ---
 

@@ -41,7 +41,7 @@ Download the latest `JConomy.jar` from the [JConomy GitHub project page](https:/
 
 4. **Start the server.** JConomy will generate its configuration files and database on first startup.
 
-5. **Confirm JConomy loaded.** Check the server console for a message from JConomy. If VaultUnlocked is missing, JConomy will log a message and disable itself — check that VaultUnlocked loaded successfully first.
+5. **Confirm JConomy loaded.** Bukkit logs a message for each plugin it loads on startup. Check the server console output for JConomy's name. If it does not appear, or if an error is logged alongside it, check that VaultUnlocked loaded successfully first — JConomy will disable itself and log an error if VaultUnlocked is missing.
 
 6. **Stop the server** and configure JConomy before going live. At minimum, define your currencies in `plugins/JConomy/config.yml`.
 

@@ -57,7 +57,7 @@ If you currently have Vault installed, replace it with VaultUnlocked. VaultUnloc
 
 **Legacy Vault providers only conflict if you opt in.** By default, JConomy does not register as a legacy Vault provider. If you have an existing legacy Vault economy plugin on your server, it will continue to operate without interference. Enabling JConomy as a legacy Vault provider is an explicit opt-in step — and if you do enable it, you will need to remove your existing legacy Vault economy plugin first, as the same one-provider rule applies.
 
-<!-- TODO: link legacy adapter configuration page once written -->
+See [Legacy Vault Adapter](../configuration/legacy-vault-adapter/) for configuration details.
 
 Plugins that only _consume_ the Vault or VaultUnlocked API (shops, command plugins, reward systems) are not providers and are not affected by either rule. They will continue to work once JConomy is registered.
 
@@ -73,6 +73,6 @@ Alternative storage backends may be added through the expansion mechanism. No al
 
 ## Balance writes are held in memory during server runtime
 
-JConomy uses a write-behind cache. Balance changes made during normal server operation are held in memory and written to disk only when the server shuts down cleanly. If your server crashes or is forcibly killed, any balance changes that occurred since the last clean shutdown may be lost.
+JConomy uses a write-behind cache. Balance changes made during normal server operation are held in memory and written to the storage backend when a flush occurs — on clean shutdown, or periodically if configured. If your server crashes or is forcibly killed before a flush, any balance changes since the last flush may be lost.
 
 This is worth knowing before you go live. Ensure your server shuts down cleanly and avoid killing the process forcibly. See [Operational Considerations](../reference/operational-considerations/) for more detail.
