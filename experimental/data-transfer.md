@@ -73,9 +73,9 @@ All commands are under `/jconomy` and are only available when `data-transfer` is
 
 ## Providers
 
-Import and export providers are supplied by expansions. Without an expansion that registers a compatible provider, the list commands will return no results and there will be nothing to import from or export to.
+Import and export providers are supplied by extensions. Without an extension that registers a compatible provider, the list commands will return no results and there will be nothing to import from or export to.
 
-See [Expansions](../../expansions/) for more information about the expansion mechanism.
+See [Extensions](../../extensions/) for more information about the extension mechanism.
 
 ---
 

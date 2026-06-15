@@ -25,9 +25,9 @@ The practical consequence is:
 
 This is a known trade-off. The write-behind cache reduces storage I/O under normal load, and the periodic flush option allows you to bound the window of potential data loss.
 
-### Storage expansions
+### Storage extensions
 
-If you are using a non-default storage expansion, the expansion's backend may have its own write behavior separate from JConomy's cache. Check the expansion's documentation to understand whether it introduces additional buffering or has its own flush configuration.
+If you are using a non-default storage extension, the extension's backend may have its own write behavior separate from JConomy's cache. Check the extension's documentation to understand whether it introduces additional buffering or has its own flush configuration.
 
 ---
 

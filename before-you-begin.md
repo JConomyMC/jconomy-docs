@@ -67,7 +67,7 @@ Plugins that only _consume_ the Vault or VaultUnlocked API (shops, command plugi
 
 JConomy ships with a built-in SQLite storage backend. On first startup it creates a database file at `plugins/JConomy/jconomy.db`. No additional database software is required.
 
-Alternative storage backends may be added through the expansion mechanism. No alternative storage expansions are officially available yet.
+Alternative storage backends may be added through the extension mechanism. No alternative storage extensions are officially available yet.
 
 ---
 

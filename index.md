@@ -23,7 +23,7 @@ Specifically, JConomy provides:
 - Registration with VaultUnlocked as the economy service provider
 - An optional legacy Vault adapter for plugins that have not yet adopted VaultUnlocked
 - An in-memory account cache to reduce disk I/O during normal operation
-- An expansion mechanism for loading additional capabilities at runtime
+- An extension mechanism for loading additional capabilities at runtime
 
 ---
 

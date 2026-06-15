@@ -58,7 +58,7 @@ plugins/
   JConomy/
     config.yml       ← default configuration file
     jconomy.db       ← SQLite database (created automatically)
-    modules/         ← directory for expansion JARs (empty by default)
+    extensions/      ← directory for extension JARs (empty by default)
 ```
 
 You do not need to create any of these manually. If `config.yml` is absent when the server starts, JConomy will generate it with defaults.
