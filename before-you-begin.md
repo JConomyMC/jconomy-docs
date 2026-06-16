@@ -73,6 +73,6 @@ Alternative storage backends may be added through the extension mechanism. No al
 
 ## Balance writes are held in memory during server runtime
 
-JConomy uses a write-behind cache. Balance changes made during normal server operation are held in memory and written to the storage backend when a flush occurs — on clean shutdown, or periodically if configured. If your server crashes or is forcibly killed before a flush, any balance changes since the last flush may be lost.
+JConomy uses a write-behind cache. Balance changes made during normal server operation are held in memory and written to the storage backend when a flush occurs — periodically by default (approximately once per minute), and always on clean shutdown. If your server crashes or is forcibly killed between flushes, any balance changes since the last flush may be lost.
 
 This is worth knowing before you go live. Ensure your server shuts down cleanly and avoid killing the process forcibly. See [Operational Considerations](../reference/operational-considerations/) for more detail.

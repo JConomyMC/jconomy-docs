@@ -16,14 +16,13 @@ This page covers operational practices that are important to running JConomy saf
 
 JConomy holds recent account data in memory. When a plugin reads or modifies a player's balance, that operation happens against the in-memory copy. Changes are not written to the storage backend immediately.
 
-JConomy flushes the cache on clean shutdown. It can also be configured to flush periodically — see the configuration documentation for details once that option is available.
+JConomy flushes the cache on clean shutdown. It also runs a periodic background flush approximately once per minute by default, which bounds the window of data loss if the server is killed unexpectedly. Both behaviors can be tuned — see [Cache configuration](../configuration/#cache) for details.
 
 The practical consequence is:
 
-- Balance changes made during normal server operation are not persisted until a flush occurs.
-- If the server crashes or the process is forcibly killed before a flush, any balance changes since the last flush are lost.
-
-This is a known trade-off. The write-behind cache reduces storage I/O under normal load, and the periodic flush option allows you to bound the window of potential data loss.
+- Balance changes made during normal server operation are not written to the storage backend immediately.
+- The periodic flush (enabled by default) persists dirty records roughly once per minute. Any balance changes since the last successful flush may be lost in a crash.
+- On clean shutdown, all remaining dirty records are flushed before the plugin stops.
 
 ### Storage extensions
 
