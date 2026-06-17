@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Experimental Features
-nav_order: 5
+nav_order: 6
 permalink: /experimental/
 has_children: true
 ---
