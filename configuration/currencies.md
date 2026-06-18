@@ -58,9 +58,36 @@ The default format string is `%sign%%symbol%%amount_formatted%`, which produces 
 
 ---
 
+## Per-currency cache options
+
+Each currency can override the global cache warming settings from the `cache` section. This allows you to selectively warm balances for specific currencies while keeping others cold.
+
+```yaml
+currencies:
+  gold:
+    display-name-singular: Gold Coin
+    display-name-plural: Gold Coins
+    cache:
+      warm-on-join: true
+      warm-on-teleport: false
+```
+
+| Setting                | Default                                                            | Description                                                                                  |
+|------------------------|--------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
+| `cache.warm-on-join`   | `true` if currency is the default currency; `false` otherwise      | Preload this currency's balance when a player joins the server                              |
+| `cache.warm-on-teleport` | `false` for all currencies                                        | Preload this currency's balance when a player teleports to a different world                |
+
+**Smart defaults:** By design, the default currency has `warm-on-join: true` by default (preserving backward compatibility for the most common use case), while non-default currencies default to `false` to avoid excessive I/O on less-used currencies. Teleport warming defaults to `false` for all currencies because not all servers use multi-world economies.
+
+**How it works:** Cache warming only occurs if both the global setting (in the `cache` section) AND the per-currency setting are enabled. For example:
+- If `cache.warm-on-join: false` globally, no currencies will warm on join regardless of their per-currency settings.
+- If `cache.warm-on-join: true` globally but `currencies.gold.cache.warm-on-join: false`, the gold currency will NOT warm on join, but other currencies will (if their per-currency settings allow it).
+
+---
+
 ## Example
 
-The following is a complete currency definition:
+The following is a complete currency definition with cache options:
 
 ```yaml
 currencies:
@@ -72,6 +99,9 @@ currencies:
     number-formatter:
       fractional:
         places: 0
+    cache:
+      warm-on-join: true
+      warm-on-teleport: false
 ```
 
 This definition:
@@ -81,6 +111,7 @@ This definition:
 - Uses a gold-colored `G` as the symbol (via the `&6` color code).
 - Formats balances with no decimal places, for example: `100 G` or `-50 G`.
 - Overrides only the `fractional.places` setting; all other formatting follows the `default-number-formatter`.
+- **Warms on join** (loads into cache when a player joins), but **does not warm on teleport** (only loads when accessed).
 
 ---
 

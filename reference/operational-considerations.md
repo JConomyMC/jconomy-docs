@@ -24,6 +24,8 @@ The practical consequence is:
 - The periodic flush (enabled by default) persists dirty records roughly once per minute. Any balance changes since the last successful flush may be lost in a crash.
 - On clean shutdown, all remaining dirty records are flushed before the plugin stops.
 
+**Note on cache warming:** JConomy can preload player balances when they join or teleport (see [Cache warming configuration](../configuration/#cache-warming-on-join-and-teleport)). Cache warming is a read-only optimization that preloads data into memory and does not affect flush timing, data persistence, or the risk of data loss.
+
 ### Storage extensions
 
 If you are using a non-default storage extension, the extension's backend may have its own write behavior separate from JConomy's cache. Check the extension's documentation to understand whether it introduces additional buffering or has its own flush configuration.
