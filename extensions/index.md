@@ -22,6 +22,19 @@ Extensions can provide:
 
 ---
 
+## Replaceable services
+
+Extensions can replace JConomy's default implementations of the following services by registering their own in `configureServices`:
+
+| Service | Default implementation | Purpose |
+|---|---|---|
+| `AccountRepository` | SQLite | Reads and writes account records |
+| `BalanceRepository` | SQLite | Reads and writes balance records |
+
+Registering a replacement for either repository is sufficient to redirect all storage for that data type.
+
+---
+
 ## Available extensions
 
 No official extensions are currently available.
