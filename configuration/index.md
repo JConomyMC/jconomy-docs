@@ -91,6 +91,6 @@ cache:
     interval-ticks: 1200
 ```
 
-`cache.periodic-flush.enabled` controls whether JConomy runs a background task to periodically write dirty cached records to the storage backend. This is enabled by default. Disabling it turns off only the background task — dirty records are still flushed on clean shutdown.
+`cache.periodic-flush.enabled` controls whether JConomy runs a background task to periodically write pending balance changes to the storage backend. This is enabled by default. Disabling it turns off only the background task — pending balance changes are still flushed on clean shutdown.
 
 `cache.periodic-flush.interval-ticks` controls how often the background flush task runs, in ticks. 20 ticks equals one second. The default of 1200 ticks is approximately once per minute at 20 TPS. Reducing this value persists data more frequently at the cost of more frequent disk writes.
